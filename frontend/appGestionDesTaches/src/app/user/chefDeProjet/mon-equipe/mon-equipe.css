@@ -1,0 +1,295 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+.project-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px 40px 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5.5 7l4.5 5 4.5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.project-select:hover {
+    border-color: #999;
+}
+
+.project-select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.project-select option {
+    padding: 10px;
+}
+
+
+.workspace-header {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-text {
+    flex: 1;
+}
+
+.workspace-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.workspace-description {
+    font-size: 18px;
+    color: #6b7280;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.invite-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:  0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.invite-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.invite-btn:active {
+    transform: translateY(0);
+}
+
+.invite-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.invite-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+/* User Cards Container */
+.container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.user-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px 15px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+.avatar-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+}
+
+.avatar.blue {
+    background: #4A90E2;
+}
+
+.avatar.teal {
+    background: #0D8BA5;
+}
+
+.avatar.purple {
+    background: #7B68EE;
+}
+
+.avatar.green {
+    background: #10B981;
+}
+
+.avatar.orange {
+    background: #F59E0B;
+}
+
+.avatar.red {
+    background: #EF4444;
+}
+
+.avatar.pink {
+    background: #EC4899;
+}
+
+.avatar.indigo {
+    background: #6366F1;
+}
+
+.user-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.user-email {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.role-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 2px solid #333;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 25px;
+    background: white;
+}
+
+.view-profile-btn {
+    width: 100%;
+    padding: 12px;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.view-profile-btn:hover {
+    background: #e8e8e8;
+}
+
+
+@media (max-width: 768px) {
+    .workspace-header {
+        padding: 30px 20px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .workspace-title {
+        font-size: 32px;
+    }
+
+    .workspace-description {
+        font-size: 16px;
+    }
+
+    .invite-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .container {
+        gap: 10px;
+    }
+
+    .user-card {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+        .avatar-green {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.avatar-purple {
+  background: linear-gradient(135deg, #6f42c1 0%, #9b59b6 100%);
+}
+
+.avatar-cyan {
+  background: linear-gradient(135deg, #17a2b8 0%, #3498db 100%);
+}
+
+.avatar-blue {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.avatar-orange {
+  background: linear-gradient(135deg, #fd7e14 0%, #f39c12 100%);
+}
+
+       

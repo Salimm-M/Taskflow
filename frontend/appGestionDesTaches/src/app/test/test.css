@@ -1,0 +1,234 @@
+/* Container */
+.tree-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Tree base */
+mat-tree {
+  display: block;
+  background: transparent;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Kol node */
+.mat-tree-node {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 8px 12px;
+  margin: 6px 0;
+  border-radius: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Parent node */
+.parent-node {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-left: 4px solid #667eea;
+  font-weight: 600;
+}
+
+.parent-node:hover {
+  background: linear-gradient(135deg, #e0e7ff 0%, #cfd9df 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+/* Child node */
+.child-node {
+  background: #fafbfc;
+  border-left: 3px solid #e0e7ff;
+  margin-left: 40px;
+}
+
+.child-node:hover {
+  background: #f0f4ff;
+  border-left-color: #667eea;
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Nested indentation */
+mat-nested-tree-node {
+  padding-left: 32px;
+  position: relative;
+}
+
+/* Connection line */
+mat-nested-tree-node::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #e0e7ff 0%, transparent 100%);
+}
+
+/* Expand button */
+.expand-btn {
+  margin-right: 8px;
+  width: 36px;
+  height: 36px;
+  background: white;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.expand-btn:hover {
+  background: #667eea;
+  transform: scale(1.1);
+}
+
+.expand-btn:hover .expand-icon {
+  color: white;
+}
+
+/* Icon lel expand */
+.expand-icon {
+  color: #667eea;
+  font-size: 22px;
+  transition: all 0.2s ease;
+}
+
+/* Spacer lel child nodes */
+.spacer {
+  width: 36px;
+  margin-right: 8px;
+}
+
+/* Node content */
+.node-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 12px;
+}
+
+/* Node icon */
+.node-icon {
+  color: #667eea;
+  font-size: 22px;
+  width: 22px;
+  height: 22px;
+}
+
+.child-node .node-icon {
+  color: #9ca3af;
+  font-size: 20px;
+}
+
+/* Node name */
+.node-name {
+  flex: 1;
+  font-size: 15px;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.child-node .node-name {
+  font-weight: 400;
+  color: #4b5563;
+}
+
+/* Status badge */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+/* Status colors - Baddel 7asab statuses mte3ek */
+.status-badge[data-status="en cours"],
+.status-badge[data-status="in progress"] {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: white;
+}
+
+.status-badge[data-status="terminé"],
+.status-badge[data-status="completed"],
+.status-badge[data-status="done"] {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  color: white;
+}
+
+.status-badge[data-status="pending"],
+.status-badge[data-status="en attente"] {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+}
+
+.status-badge[data-status="annulé"],
+.status-badge[data-status="cancelled"] {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  color: white;
+}
+
+.status-badge[data-status="new"],
+.status-badge[data-status="nouveau"] {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  color: white;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+mat-nested-tree-node > ng-container {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tree-container {
+    padding: 16px;
+    margin: 10px;
+  }
+  
+  .mat-tree-node {
+    min-height: 48px;
+  }
+  
+  .node-name {
+    font-size: 14px;
+  }
+}
+
+/* Scrollbar custom */
+.tree-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tree-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.tree-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.tree-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

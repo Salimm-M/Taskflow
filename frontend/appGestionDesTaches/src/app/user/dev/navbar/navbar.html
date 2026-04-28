@@ -1,0 +1,46 @@
+<nav class="navbar">
+  <div class="navbar-header">
+    <div class="logo">
+      <div class="logo-icon">TF</div>
+      <span class="logo-text">TaskFlow</span>
+    </div>
+  </div>
+
+  <div class="navbar-content">
+    <div class="menu-section">
+      <span class="menu-label">MENU</span>
+      
+      
+      <div class="menu-items">
+        @for ( item of menuItems;track $index) {
+        <button 
+           class="menu-item" [routerLink]="item.route">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span class="item-label">{{ item.label }}</span>
+        </button>
+    }
+
+        <button 
+          class="menu-item settings-item"(click)="navigateTo('/dev/parametre')">
+          <mat-icon>settings</mat-icon>
+          <span class="item-label">Settings</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="navbar-footer">
+      <div class="user-info">
+        <div class="user-avatar"></div>
+        <div class="user-details">
+          <div class="user-name">{{ user.nom }} {{user.prenom}}</div>
+          <div class="user-role">{{ user.role }}</div>
+        </div>
+      </div>
+      
+      <button class="sign-out-btn" (click)="signOut()">
+        <mat-icon>logout</mat-icon>
+        <span>Sign Out</span>
+      </button>
+    </div>
+  </div>
+</nav>

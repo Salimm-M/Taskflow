@@ -1,0 +1,103 @@
+.example-card {
+  max-width: 400px;
+  margin-bottom: 16px;
+  width: 22%;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 8px;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #344057;
+  margin-bottom: 1.5rem;
+  line-height: 1;
+  margin-left: 40px;
+}
+
+
+
+.example-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+html, body {
+  display: flex;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+  
+}
+.cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+mat-card-title {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+mat-card-subtitle {
+  color: #333;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.icon {
+  background: linear-gradient(135deg, #667eea 0%, #46c8ff 100%);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+mat-icon {
+  color: white;
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+mat-card-header {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .example-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .example-card {
+    width: 45%;
+  }
+}
+.body{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.listDeProjet{
+  width: 60%;
+}
+.listeUtil{
+  width: 35%;
+}

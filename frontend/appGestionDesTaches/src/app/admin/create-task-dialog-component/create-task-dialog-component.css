@@ -1,0 +1,8 @@
+mat-slide-toggle {
+  --mdc-switch-selected-handle-color: #2ecc71;
+  --mdc-switch-unselected-handle-color: #e74c3c;
+  
+  /* Change la couleur de la barre (le rail) */
+  --mdc-switch-selected-track-color: #a9dfbf;
+  --mdc-switch-unselected-track-color: #fadbd8;
+}

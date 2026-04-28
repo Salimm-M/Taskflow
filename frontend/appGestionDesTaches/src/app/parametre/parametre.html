@@ -1,0 +1,82 @@
+<div class="container">
+  <h1>Settings</h1>
+  <p class="subtitle">Manage your account and preferences</p>
+
+  
+  <div class="card">
+    <h2 class="card-title">Profile Information</h2>
+    <p class="card-subtitle">Update your personal details and avatar</p>
+
+    <form (ngSubmit)="updateUser()" #profileForm="ngForm" enctype="multipart/form-data">
+      
+      <div class="avatar-section">
+        <div class="avatar">
+          <img *ngIf="user.photo; else initials" [src]="photoUrl" alt="Profile Image">
+          <ng-template #initials>
+            {{ user.prenom[0] }}{{ user.nom[0] }}
+          </ng-template>
+        </div>
+
+        <div class="avatar-info">
+          <div class="file-input-wrapper">
+            <input
+              type="file"
+              id="avatarUpload"
+              accept="image/jpeg,image/png,image/gif"
+              (change)="onFileSelected($event)"
+              class="file-input"
+            />
+            <label for="avatarUpload" class="file-input-label">Change Avatar</label>
+          </div>
+          <span class="file-hint">JPG, GIF or PNG. Max size of 2MB</span>
+        </div>
+      </div>
+
+ 
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" [(ngModel)]="userUpdate.nom" required>
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" name="prenom" [(ngModel)]="userUpdate.prenom" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="numTelephone">Numéro de téléphone</label>
+          <input type="text" id="numTelephone" name="numTelephone" [(ngModel)]="userUpdate.numTelephone" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" [(ngModel)]="userUpdate.email" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+
+
+  <div class="card">
+    <h2 class="card-title">Security</h2>
+    <p class="card-subtitle">Secure your account with a password</p>
+
+    <form #securityForm="ngForm" (ngSubmit)="changePassword()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="currentPassword">Current Password</label>
+          <input type="password" id="currentPassword" [(ngModel)]="passwordChange.mtpCourante" name="currentPassword" required>
+        </div>
+        <div class="form-group">
+          <label for="newPassword">New Password</label>
+          <input type="password" id="newPassword" [(ngModel)]="passwordChange.mtpNew" name="newPassword" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update Password</button>
+    </form>
+  </div>
+</div>

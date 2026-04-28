@@ -1,0 +1,54 @@
+<div class="projects-container">
+    
+        <div class="projects-header">
+            <div class="header-content">
+                <h1>Projects</h1>
+                <p>Manage and track all organizational projects</p>
+            </div>
+
+        </div>
+
+        
+        <div class="projects-grid">
+           
+          @for (item of projets; track $index) {  
+            <div class="project-card">
+                <div class="card-header">
+                    <span class="status-badge in-progress">encours</span>
+                    <button class="menu-btn">⋮</button>
+                </div>
+
+                <h2 class="project-title">{{item.titre}}</h2>
+                <p class="project-description">{{item.description}}</p>
+
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <span class="progress-label">progret</span>
+                        <span class="progress-percentage">{{item.progres}}</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <mat-progress-bar mode="determinate" [value]="item.progres"></mat-progress-bar>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="team-avatars">
+                        <div class="avatar blue">AL</div>
+                        <div class="avatar teal">AD</div>
+                        <div class="avatar purple">SL</div>
+                        
+                    </div>
+                    <div class="due-date">
+                        <span class="calendar-icon">📅</span>
+                       {{item.dateFin | date:'dd-MM-yyyy'}}
+                    </div>
+                </div>
+
+                <button class="view-details-btn" (click)="openUpdateDialog(item)">View Project Details</button>
+            </div>
+
+           
+           
+        }       
+        </div>
+    </div>

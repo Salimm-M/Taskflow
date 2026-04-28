@@ -1,0 +1,29 @@
+<div class="users-list">
+  @for (u of availableUsers; track $index) {
+    <div class="user-item"
+         (click)="toggleUser(u)"
+         [class.selected]="isSelected(u)">
+
+      <div class="avatar">
+        @if (u.photo) {
+          <img [src]="'data:image/*;base64,' + u.photo">
+        } @else {
+          {{u.prenom.charAt(0)}}{{u.nom.charAt(0)}}
+        }
+      </div>
+
+      <div>
+        <p>{{u.nom}} {{u.prenom}}</p>
+        <small>{{u.email}}</small>
+      </div>
+
+    </div>
+  }
+</div>
+
+<div class="actions">
+  
+  <button (click)="save()" [disabled]="selectedUsers.length === 0">
+    Add ({{selectedUsers.length}})
+  </button>
+</div>

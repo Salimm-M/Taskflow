@@ -1,0 +1,183 @@
+<div class="kanban-board">
+
+  
+  <div
+    cdkDropList
+    #todoList1="cdkDropList"
+    [cdkDropListData]="toDo"
+    [cdkDropListConnectedTo]="[todoList2, todoList3]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+
+  >
+
+    <h3 class="column-title">
+      To Do
+      <span>{{ toDo.length }}</span>
+    </h3>
+
+    @for (task of toDo; track $index) {
+      <div class="task-card" (click)="open(task)" cdkDrag>
+
+        <div class="card-header">
+          <span 
+            class="priority-badge"
+            [ngClass]="getPriorityClass(task.periorite)">
+            {{ task.periorite }}
+          </span>
+
+          <span 
+            class="priority-dot"
+            [ngClass]="getPriorityClass(task.periorite)">
+          </span>
+        </div>
+
+        <h4 class="task-title">{{ task.titre }}</h4>
+
+        <div class="card-footer">
+          @if (task.dateFin) {
+            <span >
+              {{ getdate(task.dateFin) }}
+            </span>
+            <mat-icon>timelapse</mat-icon>
+          }
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+µ
+  <div
+    cdkDropList
+    #todoList2="cdkDropList"
+    [cdkDropListData]="inProgress"
+    [cdkDropListConnectedTo]="[todoList1, todoList3]"
+    class="example-list"
+    
+    (cdkDropListDropped)="drop($event)"
+  >
+
+    <h3 class="column-title">
+      In Progress
+      <span>{{ inProgress.length }}</span>
+    </h3>
+
+    @for (task of inProgress; track $index) {
+      <div class="task-card" (click)="open(task)" cdkDrag>
+
+        <div class="card-header">
+          <span 
+            class="priority-badge"
+            [ngClass]="getPriorityClass(task.periorite)">
+            {{ task.periorite }}
+          </span>
+
+          <span 
+            class="priority-dot"
+            [ngClass]=" getPriorityClass(task.periorite)">
+          </span>
+        </div>
+
+        <h4 class="task-title">{{ task.titre }}</h4>
+
+        <div class="card-footer">
+          <span >
+            {{ task.dateFin?(task.dateFin):'' }}
+          </span>
+          <mat-icon>timelapse</mat-icon>
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+
+
+  <div
+    cdkDropList
+    #todoList3="cdkDropList"
+    [cdkDropListData]="inReview"
+    [cdkDropListConnectedTo]="[todoList1, todoList2]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+
+    <h3 class="column-title">
+      Review
+      <span>{{ inReview.length }}</span>
+    </h3>
+
+    @for (task of inReview; track $index) {
+      <div class="task-card" (click)="open(task)" cdkDrag>
+
+        <div class="card-header">
+          <span 
+            class="priority-badge"
+            [ngClass]="getPriorityClass(task.periorite)">
+            {{ task.periorite }}
+          </span>
+
+          <span 
+            class="priority-dot"
+            [ngClass]="getPriorityClass(task.periorite)">
+          </span>
+        </div>
+
+        <h4 class="task-title">{{ task.titre }}</h4>
+
+        <div class="card-footer">
+          <mat-icon>timelapse</mat-icon>
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+
+
+  <div
+    cdkDropList
+    #todoList4="cdkDropList"
+    [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+
+    <h3 class="column-title">
+      Done
+      <span>{{ done.length }}</span>
+    </h3>
+
+    @for (task of done; track $index) {
+      <div class="task-card" cdkDrag>
+
+        <div class="card-header">
+          <span 
+            class="priority-badge"
+            [ngClass]="getPriorityClass(task.periorite)">
+            {{ task.periorite }}
+          </span>
+
+          <span 
+            class="priority-dot"
+            [ngClass]="getPriorityClass(task.periorite)">
+          </span>
+        </div>
+
+        <h4 class="task-title">{{ task.titre }}</h4>
+
+        <div class="card-footer">
+          <mat-icon>check_circle</mat-icon>
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+</div>

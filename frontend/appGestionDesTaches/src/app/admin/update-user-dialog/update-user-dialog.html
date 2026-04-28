@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Modifier l'utilisateur</h2>
+<mat-dialog-content>
+  <div class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput [(ngModel)]="data.nom" required>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Prénom</mat-label>
+      <input matInput [(ngModel)]="data.prenom" required>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="data.email" type="email" required>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Téléphone</mat-label>
+      <input matInput [(ngModel)]="data.numTelephone">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Adresse</mat-label>
+      <input matInput [(ngModel)]="data.adresse">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Rôle</mat-label>
+      <mat-select [(ngModel)]="data.role">
+        @for (r of roles; track $index) {
+        <mat-option  [value]="r">{{ r }}</mat-option>}
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Date de naissance</mat-label>
+      <input matInput [(ngModel)]="data.dateDeNaissance" type="date">
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Enregistrer</button>
+</mat-dialog-actions>

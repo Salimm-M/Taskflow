@@ -1,0 +1,88 @@
+.users-list {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #fff;
+}
+
+.user-item:hover {
+    background: #f5f7ff;
+    border-color: #c7d2fe;
+}
+
+.user-item.selected {
+    background: #eef2ff;
+    border-color: #6366f1;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ddd;
+    font-weight: bold;
+    color: #444;
+    font-size: 14px;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.actions button {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.actions button:first-child {
+    background: #e5e7eb;
+}
+
+.actions button:first-child:hover {
+    background: #d1d5db;
+}
+
+.actions button:last-child {
+    background: #6366f1;
+    color: white;
+}
+
+.actions button:last-child:hover {
+    background: #4f46e5;
+}
+
+.actions button:disabled {
+    background: #a5b4fc;
+    cursor: not-allowed;
+}

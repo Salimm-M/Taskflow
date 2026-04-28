@@ -1,0 +1,180 @@
+
+html, body {
+  margin: 0;
+  padding: 16px;
+  background-color: #f0f4f8;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.cards {
+  display: flex;
+  
+  
+  gap: 16px;
+  width: 100%;
+}
+
+
+.example-card {
+  max-width: 1000px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.example-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+mat-card-header {
+  padding: 20px;
+  padding-bottom: 0px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+}
+
+
+mat-card-title {
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+
+}
+mat-card-title-group{
+  width: 100%;
+}
+
+mat-card-title h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.divGroup {
+  width: 100%;
+}
+span{
+  font-weight:lighter;
+  float: right;
+
+}
+
+
+mat-card-subtitle {
+  color: #666;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+
+
+
+mat-card-content {
+  padding: 20px;
+}
+
+mat-card-content > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+mat-card-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+mat-card-content p:first-child {
+  font-weight: 500;
+  color: #333;
+}
+
+mat-card-content p:last-child {
+  font-weight: 700;
+  color: #667eea;
+  font-size: 16px;
+}
+
+
+mat-progress-bar {
+  height: 8px;
+  border-radius: 4px;
+}
+
+
+.icon {
+  background: linear-gradient(135deg, #667eea 0%, #46c8ff 100%);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+mat-icon {
+  color: white;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+  }
+  
+  .example-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .example-card {
+    width: 100%;
+  }
+}
+.team-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .team-title {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1a202c;
+      margin: 0;
+    }
+
+    .manage-team-link {
+      color: #3b82f6;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .manage-team-link:hover {
+      text-decoration: underline;
+    }
+    

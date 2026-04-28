@@ -1,0 +1,227 @@
+<div class="modal-container">
+
+ 
+  <div class="modal-header">
+    <div class="header-top">
+      <div class="header-left">
+        <div class="status-project-id">
+          <span class="project-id">Project ID: {{ data.id }}</span>
+        </div>
+        <h1 class="modal-title">{{ data.titre }}</h1>
+        <p class="modal-subtitle">{{ data.description }}</p>
+      </div>
+
+      <button mat-icon-button class="close-btn" (click)="onCancel()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+
+  <mat-tab-group class="project-tabs" animationDuration="300ms">
+
+    
+    <mat-tab label="Overview">
+      <div class="tab-content">
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">
+              <mat-icon>pie_chart</mat-icon>
+              PROGRESS
+            </div>
+            <div class="stat-value">{{ data.progres }}%</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-label">
+              <mat-icon>check_circle</mat-icon>
+              TASKS
+            </div>
+            <div class="stat-value">{{ dataSource.data.length }}</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-label">
+              <mat-icon>schedule</mat-icon>
+              DAYS LEFT
+            </div>
+            <div class="stat-value">{{ diffDays }} Days</div>
+          </div>
+        </div>
+
+        <div class="description-section">
+          <h2 class="section-title">Project Description</h2>
+          <p class="section-content">{{ data.description }}</p>
+        </div>
+
+        <div class="timeline-section">
+          <h2 class="section-title">Project Timeline</h2>
+          <div class="timeline-info">
+            <div class="timeline-item">
+              <mat-icon>event</mat-icon>
+              <div class="timeline-details">
+                <span class="timeline-label">Start Date</span>
+                <span class="timeline-value">{{ data.dateDebut }}</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <mat-icon>event_available</mat-icon>
+              <div class="timeline-details">
+                <span class="timeline-label">End Date</span>
+                <span class="timeline-value">{{ data.dateFin }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </mat-tab>
+
+   
+   <mat-tab label="Tasks & Breakdown">
+  <div class="tab-content">
+
+   
+    <div class="tasks-header">
+      <h3>Liste des tâches</h3>
+      <div class="tasks-actions">
+        <span class="tasks-count">{{ dataSource.data.length }} tâches</span>
+        <button mat-raised-button color="primary" (click)="showAddTask()">
+          <mat-icon>add</mat-icon> Add Task
+        </button>
+      </div>
+    </div>
+
+
+    @if(isAddingTask) {
+      <div class="add-task-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Task Title *</mat-label>
+          <input matInput [(ngModel)]="newTaskTitle" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput [(ngModel)]="newTaskDescription"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Priority</mat-label>
+          <select matNativeControl [(ngModel)]="newTaskPriority">
+            <option value="faible">Basse</option>
+            <option value="moyen">Moyenne</option>
+            <option value="haute">Haute</option>
+          </select>
+        </mat-form-field>
+      
+        
+        <div class="task-form-actions">
+          <button mat-raised-button color="primary" (click)="addTask()" [disabled]="!newTaskTitle.trim()">
+            <mat-icon>check</mat-icon> Save
+          </button>
+          <button mat-stroked-button (click)="cancelAddTask()">
+            <mat-icon>close</mat-icon> Cancel
+          </button>
+        </div>
+      </div>
+    }
+
+   
+    <mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
+
+
+      <mat-nested-tree-node *matTreeNodeDef="let node">
+        <div class="tree-leaf-row">
+          <div class="tree-row-left">
+            <span class="tree-leaf-indent"></span>
+            <span class="tree-leaf-icon">↳</span>
+            <span class="tree-row-title">{{ node.name }}</span>
+          </div>
+          <div class="tree-row-right">
+            <span class="tree-row-status tree-row-status--{{ node.status }}">{{ node.status }}</span>
+            <span class="tree-row-btn-delete" (click)="deleteTask(node.id)">🗑</span>
+          </div>
+        </div>
+      </mat-nested-tree-node>
+
+      
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChildren">
+
+        <div class="tree-parent-row" matTreeNodeToggle>
+          <div class="tree-row-left">
+            <span class="tree-parent-arrow">{{ tree.isExpanded(node) ? '▾' : '▸' }}</span>
+            <span class="tree-parent-icon">
+  <mat-icon>folder</mat-icon>
+</span>
+            <span class="tree-row-title">{{ node.name }}</span>
+            <span class="tree-parent-count">({{ node.children.length }})</span>
+          </div>
+          <div class="tree-row-right">
+            <span class="tree-row-status tree-row-status--{{ node.status }}">{{ node.status }}</span>
+            <span class="tree-row-progress">📈 {{ node.progress }}%</span>
+            <span class="tree-row-btn-add" (click)="showAddSubtask(node)">＋</span>
+            <span class="tree-row-btn-delete" (click)="deleteTask(node.id)">🗑</span>
+          </div>
+        </div>
+
+      
+        @if(addingSubtaskToNode?.id === node.id) {
+          <div class="add-subtask-form">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Task Title *</mat-label>
+              <input matInput [(ngModel)]="newSubtaskTitle" required />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput [(ngModel)]="newSubtaskDescription"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Priority</mat-label>
+              <select matNativeControl [(ngModel)]="newSubtaskPriority">
+                <option value="faible">Basse</option>
+                <option value="moyen">Moyenne</option>
+                <option value="haute">Haute</option>
+              </select>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+          <mat-label>Developer</mat-label>
+          <mat-select [(ngModel)]="newSubtaskDeveloperId">
+            <mat-option *ngFor="let dev of devs" [value]="dev.id">
+              {{ dev.nom }} {{ dev.prenom }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+            <div class="subtask-form-actions">
+              <button mat-raised-button color="primary" (click)="addSubtask()" [disabled]="!newSubtaskTitle.trim()">Save</button>
+              <button mat-stroked-button (click)="cancelAddSubtask()">Cancel</button>
+            </div>
+          </div>
+        }
+
+        <!-- CHILDREN -->
+        @if(tree.isExpanded(node)) {
+          <div class="tree-children">
+            <ng-container matTreeNodeOutlet></ng-container>
+          </div>
+        }
+
+      </mat-nested-tree-node>
+
+    </mat-tree>
+
+    <!-- EMPTY STATE -->
+    @if(!dataSource.data || dataSource.data.length === 0) {
+      <div class="tree-empty-state">
+        <mat-icon>task_alt</mat-icon>
+        <p>Aucune tâche disponible</p>
+      </div>
+    }
+
+  </div>
+</mat-tab>
+
+   
+
+  </mat-tab-group>
+
+</div>

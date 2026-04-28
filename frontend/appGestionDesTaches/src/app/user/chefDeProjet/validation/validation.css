@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #f5f7fb;
+}
+
+.table-section {
+  flex: 2;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.details-section {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.file-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f5f7fb;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.file-item:hover {
+  background: #e9edf7;
+  transform: translateX(3px);
+}
+
+.file-icon {
+  width: 35px;
+  height: 35px;
+  background: #3f51b5;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.file-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatar-blue { background: #3f51b5; }
+.avatar-green { background: #4caf50; }
+.avatar-purple { background: #9c27b0; }
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}

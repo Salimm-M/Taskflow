@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+}
+
+app-root {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+.mat-mdc-header-cell {
+  background-color: #1e3a8a !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 16px;
+}
+
+.mat-mdc-row:hover {
+  background-color: #e3f2fd;
+  cursor: pointer;
+}
+
+.mat-mdc-cell {
+  padding: 16px;
+  color: #333;
+}
+
+.mat-mdc-paginator {
+  background-color: #f8f9fa;
+  border-top: 2px solid #007bff;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: #007bff !important;
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+  color: #007bff !important;
+}
+.mat-mdc-header-cell {
+  background-color: #1e3a8a !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 16px;
+}
+
+.mat-mdc-row:hover {
+  background-color: #e3f2fd;
+  cursor: pointer;
+}
+
+.mat-mdc-cell {
+  padding: 16px;
+  color: #333;
+}
+
+.mat-mdc-paginator {
+  background-color: #f8f9fa;
+  border-top: 2px solid #007bff;
+}

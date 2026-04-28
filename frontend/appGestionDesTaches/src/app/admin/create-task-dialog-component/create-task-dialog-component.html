@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>Ajouter une tâche</h2>
+
+<mat-dialog-content class="form-container">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Titre</mat-label>
+    <input matInput [(ngModel)]="task.titre" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="task.description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Progress</mat-label>
+    <input matInput type="number" [(ngModel)]="task.progress">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Priorité</mat-label>
+    <mat-select [(ngModel)]="task.periorite">
+        @for (p of periorites; track $index) {
+      <mat-option [value]="p">
+        {{ p }}
+      </mat-option>}
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Projet</mat-label>
+    <mat-select [(ngModel)]="task.idProjet" (selectionChange)=" loadTasksByProjet()">
+        @for (p of projets; track $index) {
+      <mat-option [value]="p.id">
+        {{ p.titre }}
+      </mat-option>}
+    </mat-select>
+  </mat-form-field>
+ <div>
+    sous tache: 
+    <p><mat-slide-toggle [(ngModel)]="isChecked" (change)="onToggleChange($event)">{{isChecked}}</mat-slide-toggle></p>
+    
+  </div>
+  @if (isChecked) {
+     <mat-form-field appearance="outline">
+    <mat-label>tache mere</mat-label>
+    <mat-select [(ngModel)]="task.idParentTask">
+        @for (p of tasks ; track $index) {
+      <mat-option [value]="p.id">
+        {{ p.titre }}
+      </mat-option>}
+    </mat-select>
+  </mat-form-field>
+
+  
+      <mat-form-field appearance="outline">
+    <mat-label>devloppeur</mat-label>
+    <mat-select [(ngModel)]="task.idDeveloppeur">
+        @for (p of devs ; track $index) {
+      <mat-option [value]="p.id">
+        {{ p.nom }} {{p.prenom}}
+      </mat-option>}
+    </mat-select>
+  </mat-form-field>
+
+  }
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="save()">Ajouter</button>
+</mat-dialog-actions>

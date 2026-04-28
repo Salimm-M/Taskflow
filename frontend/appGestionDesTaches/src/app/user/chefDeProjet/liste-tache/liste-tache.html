@@ -1,0 +1,24 @@
+<mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
+
+  <!-- LEAF -->
+  <mat-nested-tree-node *matTreeNodeDef="let node">
+    <div class="child-node">
+      📄 {{ node.name }}
+    </div>
+  </mat-nested-tree-node>
+
+  <!-- PARENT -->
+  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+
+    <div class="parent-node" matTreeNodeToggle>
+      📁 {{ node.name }}
+    </div>
+@if(tree.isExpanded(node)) {
+    <div class="children" >
+      <ng-container matTreeNodeOutlet></ng-container>
+    </div>
+}
+
+  </mat-nested-tree-node>
+
+</mat-tree>

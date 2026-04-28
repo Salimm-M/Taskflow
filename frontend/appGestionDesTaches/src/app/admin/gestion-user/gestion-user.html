@@ -1,0 +1,81 @@
+<div class="header-section">
+  <button mat-raised-button color="primary" class="ajout-btn" (click)="openCreateUserDialog()">
+    <mat-icon>person_add</mat-icon>
+    Ajouter un utilisateur
+  </button>
+
+  <div class="search-container">
+    <mat-icon class="search-icon">search</mat-icon>
+    <input
+      type="text"
+      #filter
+      (keyup)="applyFilter(filter)"
+      placeholder="Rechercher un utilisateur..."
+      class="search-input"
+    />
+  </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef> Nom </th>
+    <td mat-cell *matCellDef="let element">
+      <div class="avatar" [ngClass]="getColor(element.id)">
+        @if(element.photo) {
+          <img [src]="'data:image/jpeg;base64,' + element.photo" alt="{{element.nom}} {{element.prenom}}" class="avatar-image"/>
+        } @else {
+          {{element.prenom.charAt(0)}}{{element.nom.charAt(0)}}
+        }
+      </div>
+      {{element.nom}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="prenom">
+    <th mat-header-cell *matHeaderCellDef> Prénom </th>
+    <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="numTelephone">
+    <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+    <td mat-cell *matCellDef="let element"> {{element.numTelephone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef> Rôle </th>
+    <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="adresse">
+    <th mat-header-cell *matHeaderCellDef> Adresse </th>
+    <td mat-cell *matCellDef="let element"> {{element.adresse}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dateDeNaissance">
+    <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateDeNaissance}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="openUpdateDialog(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteUser(element.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>

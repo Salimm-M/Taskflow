@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Modifier le projet</h2>
+
+<mat-dialog-content>
+  <div class="form-container">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Titre</mat-label>
+      <input matInput [(ngModel)]="data.titre">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="data.description">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date début</mat-label>
+      <input matInput type="date" [(ngModel)]="data.dateDebut">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date fin</mat-label>
+      <input matInput type="date" [(ngModel)]="data.dateFin">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Chef de projet</mat-label>
+      <mat-select [(ngModel)]="data.chefDeProjetId">
+        @for ( chef of chefsDeProjet; track $index) {
+        <mat-option [value]="chef.id">
+          {{ chef.nom }} {{ chef.prenom }}
+        </mat-option>}
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Enregistrer</button>
+</mat-dialog-actions>

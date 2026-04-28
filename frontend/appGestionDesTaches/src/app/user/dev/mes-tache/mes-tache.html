@@ -1,0 +1,23 @@
+ <div class="container">
+        <div class="header">
+            <h1>My Tasks</h1>
+            <a href="#">View Kanban</a>
+        </div>
+
+        <div class="task-list">
+            @for (item of myTasks; track $index) {
+            <div class="task-item">
+                <div class="task-indicator done"></div>
+                <div class="task-content">
+                    <div class="task-title">{{item.titre}}</div>
+                    <div class="task-date">{{item.description}}</div>
+                </div>
+                <div class="task-meta">
+                    <span class="priority-badge priority-high">{{item.periorite}}</span>
+                    
+                </div>
+            </div>
+        }
+           
+        </div>
+    </div>

@@ -1,0 +1,28 @@
+<div class="team-container">
+  <div class="team-header">
+    <h1 class="team-title">Team Overview</h1>
+  
+  </div>
+  @for (item of users.slice(0,5); track $index) {
+
+
+  <div class="team-card">
+    <div class="team-member" >
+      <div class="member-info">
+        <div class="avatar"  [ngClass]="getColor()">
+          @if(item.photo) {
+            <img [src]="'data:image/jpeg;base64,' + item.photo" alt="{{item.nom}} {{item.prenom}}" class="avatar-image"/>
+          } @else {
+            {{item.prenom.charAt(0)}}{{item.nom.charAt(0)}}
+          }
+        </div>
+        <div class="member-details">
+          <p class="member-name">{{item.prenom+" "+item.prenom}}</p>
+          <p class="member-role">{{item.role}}</p>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+  }
+</div>

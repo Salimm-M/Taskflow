@@ -1,0 +1,40 @@
+<div class="workspace-header">
+        <div class="header-content">
+            <div class="header-text">
+                <h1 class="workspace-title">Team Workspace</h1>
+                <p class="workspace-description">Manage your team members and view their performance.</p>
+            </div>
+            <select class="project-select" (change)="onProjectChange($event)">
+            <option>selctionez un projet</option>
+            @for (p of projets; track $index) {
+                <option [value]="p.id">{{p.titre}}</option>
+            }
+        </select>
+            <button class="invite-btn" (click)="openCreateDialog()">
+                <span class="invite-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+                    </svg>
+                </span>
+                Invite Member
+            </button>
+        </div>
+    </div>
+
+<div class="container">
+    
+     @for (item of users; track $index) {
+        <div class="user-card">
+            <div [ngClass]="getColor()" class="avatar"> 
+                @if(item.photo) {
+                  <img [src]="'data:image/jpeg;base64,' + item.photo" alt="{{item.nom}} {{item.prenom}}" class="avatar-image"/>
+                } @else {
+                  {{item.prenom.charAt(0)}}{{item.nom.charAt(0)}}
+                }
+            </div>
+            <h2 class="user-name">{{item.nom}} {{item.prenom}}</h2>
+            <p class="user-email">{{item.email}}</p>
+            <span class="role-badge">devloppeur</span>
+        </div>
+    }
+ </div>

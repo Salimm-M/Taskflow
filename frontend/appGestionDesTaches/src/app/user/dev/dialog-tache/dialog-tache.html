@@ -1,0 +1,119 @@
+<div class="modal-container">
+  <div class="modal-header">
+    <div class="header-top">
+      <div class="header-left">
+        <div class="status-project-id">
+          <span class="project-id"> ID Tache: {{ data.id }}</span>
+        </div>
+        <h1 class="modal-title">{{ data.titre }}</h1>
+        <p class="modal-subtitle">{{ data.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <mat-tab-group class="project-tabs" animationDuration="300ms">
+
+    <mat-tab label="detail">
+      <div class="tab-content">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">
+              <mat-icon class="stat-icon">schedule</mat-icon>
+              JOURS RESTANTS
+            </div>
+            <div class="stat-value">jours</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-label">
+              <mat-icon class="stat-icon">check_circle</mat-icon>
+              Periorite
+            </div>
+            <div class="stat-value">{{ getPriorityLabel(data.periorite) }}</div>
+          </div>
+        </div>
+
+        <div class="description-section">
+          <h2 class="section-title">Project Description</h2>
+          <p class="section-content">{{ data.description }}</p>
+        </div>
+
+        <div class="timeline-section">
+          <div class="timeline-info">
+            <div class="timeline-item">
+              <mat-icon>event</mat-icon>
+              <div class="timeline-details">
+                <span class="timeline-label">Date Debut : </span>
+                <span class="timeline-value">{{ data.dateCreation | date: 'dd-MM-yyyy' }}</span>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <mat-icon>event_available</mat-icon>
+              <div class="timeline-details">
+                <span class="timeline-label">Date Fin : </span>
+                <span class="timeline-value">{{ data.dateFin | date: 'dd-MM-yyyy' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="files">
+      <div class="tabfile">
+
+        <div class="tab-contentt">
+          <input type="file" #fileInput hidden multiple (change)="onFilesSelected($event)">
+
+          <button id="file-input" (click)="fileInput.click()">
+            <mat-icon>upload</mat-icon>
+            ajouter fichier
+          </button>
+
+          <button class="upload-btn"
+              (click)="uploadFiles()"
+                  [disabled]="files.length === 0">
+            Upload
+          </button>
+        </div>
+
+        <div class="files">
+
+          <h3>Fichiers stockés</h3>
+
+          @for (file of fichierStocke; track $index) {
+            <div class="file-item">
+              <div class="file-name">
+                <mat-icon>insert_drive_file</mat-icon>
+                <span>{{ file.nom }}</span>
+              </div>
+
+              <a   (click)="downloadFile(file)">
+                <mat-icon>visibility</mat-icon>
+              </a>
+            </div>
+          }
+
+          <h3>Fichiers à uploader</h3>
+
+          @for (file of files; track $index) {
+            <div class="file-item">
+              <div class="file-name">
+                <mat-icon>insert_drive_file</mat-icon>
+                <span>{{ file.name }}</span>
+              </div>
+
+              <button (click)="removeFile($index)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          }
+
+        </div>
+
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

@@ -1,0 +1,69 @@
+<div class="header-section">
+  <button mat-raised-button color="primary" class="ajout-btn" (click)="openCreateDialog()">
+    <mat-icon>add</mat-icon>
+    Ajouter un projet
+  </button>
+
+  <div class="search-container">
+    <mat-icon class="search-icon">search</mat-icon>
+    <input
+      type="text"
+      #filter
+      (keyup)="applyFilter(filter)"
+      placeholder="Rechercher un projet..."
+      class="search-input"
+    />
+  </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="titre">
+    <th mat-header-cell *matHeaderCellDef>Titre</th>
+    <td mat-cell *matCellDef="let p">{{ p.titre }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let p">{{ p.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="progres">
+    <th mat-header-cell *matHeaderCellDef>Progress</th>
+    <td mat-cell *matCellDef="let p">{{ p.progres }}%</td>
+  </ng-container>
+
+  <ng-container matColumnDef="dateDebut">
+    <th mat-header-cell *matHeaderCellDef>Début</th>
+    <td mat-cell *matCellDef="let p">{{ p.dateDebut }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="dateFin">
+    <th mat-header-cell *matHeaderCellDef>Fin</th>
+    <td mat-cell *matCellDef="let p">{{ p.dateFin }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="chefDeProjet">
+    <th mat-header-cell *matHeaderCellDef>Chef</th>
+    <td mat-cell *matCellDef="let p">
+      {{ noms.get(p.chefDeProjetId) }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let p">
+      <button mat-icon-button color="primary" (click)="openUpdateDialog(p)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteProjet(p.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>

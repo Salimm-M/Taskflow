@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Modifier la tâche</h2>
+<mat-dialog-content>
+  <div class="form-container">
+    <!-- Titre -->
+    <mat-form-field appearance="outline">
+      <mat-label>Titre</mat-label>
+      <input matInput [(ngModel)]="data.titre" required>
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="data.description">
+    </mat-form-field>
+
+    <!-- Status -->
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="data.status" required>
+        <mat-option value="AFaire">À Faire</mat-option>
+        <mat-option value="EnCours">En Cours</mat-option>
+        <mat-option value="Terminee">Terminée</mat-option>
+        <mat-option value="AVerifie">À Vérifier</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Progress -->
+    <mat-form-field appearance="outline">
+      <mat-label>Progress (%)</mat-label>
+      <input matInput type="number" [(ngModel)]="data.progress">
+    </mat-form-field>
+
+    <!-- Priorité -->
+    <mat-form-field appearance="outline">
+      <mat-label>Priorité</mat-label>
+      <mat-select [(ngModel)]="data.periorite" required>
+        <mat-option value="faible">Faible</mat-option>
+        <mat-option value="moyen">Moyen</mat-option>
+        <mat-option value="haute">Haute</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Développeur ID -->
+    <mat-form-field appearance="outline">
+      <mat-label>Développeur ID</mat-label>
+      <input matInput type="number" [(ngModel)]="data.idDeveloppeur">
+    </mat-form-field>
+
+    <!-- Projet ID -->
+    <mat-form-field appearance="outline">
+      <mat-label>Projet ID</mat-label>
+      <input matInput type="number" [(ngModel)]="data.idProjet">
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Enregistrer</button>
+</mat-dialog-actions>

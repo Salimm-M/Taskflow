@@ -1,0 +1,37 @@
+ <div class="team-header">
+    <h1 class="team-title">projets</h1>
+    
+  </div>
+  @for (item of p; track $index) {
+<div class="cards">
+  
+  
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    
+    <mat-card-title-group>
+      <div class="divGroup">
+      <mat-card-title>
+        
+        <h3>{{item.titre}}</h3>
+<span  class="badge bg-light-blue rounded-pill" style="background-color: #DBEAFE
+;color: blue" data-mdb-ripple-color="#ffffff"> en cours </span>    </mat-card-title>
+      
+      <mat-card-subtitle>{{item.description}}</mat-card-subtitle>
+      </div>
+     
+
+    </mat-card-title-group>
+    
+  </mat-card-header>
+
+   <mat-card-content>
+        <div><p>progres</p> <p>{{item.progres}}</p></div>
+        
+         <mat-progress-bar mode="determinate" [value]="item.progres"></mat-progress-bar>
+</mat-card-content>
+</mat-card>
+
+</div>
+
+  }
